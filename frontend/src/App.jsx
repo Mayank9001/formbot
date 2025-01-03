@@ -36,8 +36,8 @@ const App = () => {
           <Route path='/workspace/:id' element={<FolderSection />}/>
           <Route path='/form-create/:folderid' element={<FormCreate />}/>
           <Route path='/form-create/workspace' element={<FormCreate />}/>
-          <Route path='/form-get/:formid' element={<FormCreate />}/>
           <Route path='/form-bot/:formid' element={<FormBot />}/>
+          <Route path='/form-get/:formid' element={<FormCreate />}/>
         </Routes>
       </Router>
     </ThemeProvider>
