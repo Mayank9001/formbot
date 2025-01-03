@@ -3,7 +3,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import styles from "./pageStyles/formAnalytics.module.css";
 import { getAnalyticalData } from "../services/response.services";
-import Loader from "../components/Loder";
+import Loading from "../components/Loading";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -88,7 +88,7 @@ const FormAnalytics = ({ formid }) => {
   return (
     <div className={styles.container}>
       {loading ? (
-        <Loader />
+        <Loading />
       ) : (
         <>
           {dataAvailable ? (

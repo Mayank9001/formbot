@@ -7,7 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import FormmFormat from "../components/FormmFormat";
-import Loader from "../components/Loder";
+import Loading from "../components/Loading";
 
 const FolderSection = () => {
   const { id } = useParams();
@@ -61,7 +61,7 @@ const FolderSection = () => {
   return (
     <div className={styles.container}>
       <WorkSpaceNavbar />
-      {loading ? <Loader /> : <>
+      {loading ? <Loading /> : <>
       <div className={styles.foldersNav}>
         <div
           className={styles.folderName}

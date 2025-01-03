@@ -11,8 +11,8 @@ import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   const navigate = useNavigate();
 
-  // if user already login mot require to login again 
-  // via token directly naviagte to user workspace
+  //checking if user had previously logged in
+  //if logged in then redirect to workspace  
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/workspace");

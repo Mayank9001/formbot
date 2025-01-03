@@ -10,7 +10,7 @@ import { GoImage } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { ThemeContext } from "../Contexts/ThemeProvider";
 import FormAnalytics from "./FormAnalytics";
-import Loader from "../components/Loder";
+import Loading from "../components/Loading";
 
 const FormCreate = () => {
   const [loading, setLoading] = useState(false);
@@ -181,7 +181,7 @@ const FormCreate = () => {
   return (
     <div className={styles.container}>
       {loading ? (
-        <Loader />
+        <Loading />
       ) : (
         <>
           <FormmNav

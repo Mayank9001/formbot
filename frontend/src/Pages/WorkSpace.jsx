@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./pageStyles/workspace.module.css";
 import { FaPlus } from "react-icons/fa6";
-import  Loader  from "../components/Loder"
+import  Loading  from "../components/Loading"
 import { AiOutlineFolderAdd } from "react-icons/ai";
 import CreatFolder from "./modals/CreatFolder";
 import {
@@ -178,7 +178,7 @@ const WorkSpace = () => {
         myWorkSpaces={myWorkSpaces}
         handleSelectedWorkSpace={handleSelectedWorkSpace}
       />
-      { loading ? <Loader /> : <>
+      { loading ? <Loading /> : <>
       <div className={styles.foldersNav}>
         <div
           className={styles.folderName}

@@ -14,25 +14,21 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
-  const [confirmPass, setConfirmPass] = useState("");
-
-  const [errors, setErros] = useState({});
-
+  const [error, setError] = useState({});
   // validate Input Fields 
   const validateFrom = () =>{
     const newError = {};
     if(!formData.username.trim()) newError.username = "Username is Required !";
     if(!formData.email.trim()) newError.email = "Email is Required !";
     if(!formData.password.trim()) newError.password = "Password is Required !";
-    if(!confirmPass.trim()) newError.confirmPass = "Field Required !";
-    if(formData.password.trim() !== confirmPass) newError.confirmPass = "enter same password in both fields";
-    setErros(newError);
+    if(!formData.confirmPassword.trim()) newError.confirmPass = "Field Required !";
+    if(formData.password.trim() !== formData.confirmPassword.trim()) newError.confirmPass = "Enter same password in both fields";
+    setError(newError);
     return Object.keys(newError).length === 0;
   }
-
-
-  // register new user 
+  // new user registration 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if(!validateFrom()){
@@ -53,8 +49,8 @@ const Register = () => {
       username: "",
       email: "",
       password: "",
+      confirmPassword: "",
     });
-    setConfirmPass("");
   };
 
   return (
@@ -66,62 +62,62 @@ const Register = () => {
         <form onSubmit={handleFormSubmit}>
           <div className={styles.logindiv}>
             <div className={styles.email}>
-              <label style={errors.username && {color:"red"}}>Username</label>
+              <label style={error.username && {color:"red"}}>Username</label>
               <input
                 type="text"
                 placeholder="Enter your email"
                 name="username"
                 value={formData.username}
-                style={ errors.username && {border:"1px solid red"}}
+                style={ error.username && {border:"1px solid red"}}
                 onChange={(e) =>
                   setFormData({ ...formData, [e.target.name]: e.target.value })
                 }
               />
-              <p style={{ visibility: errors.username ? "visible" : "hidden"}}>
-                {errors.username || "Field Requires"}
+              <p style={{ visibility: error.username ? "visible" : "hidden"}}>
+                {error.username || "Field Requires"}
               </p>
             </div>
             <div className={styles.email}>
-              <label style={errors.email && {color:"red"}}>Email</label>
+              <label style={error.email && {color:"red"}}>Email</label>
               <input
                 type="text"
                 placeholder="Enter your email"
                 name="email"
                 value={formData.email}
-                style={ errors.email && {border:"1px solid red"}}
+                style={ error.email && {border:"1px solid red"}}
                 onChange={(e) =>
                   setFormData({ ...formData, [e.target.name]: e.target.value })
                 }
               />
-              <p style={{visibility : errors.email ? "visible" : " hidden"}}>{ errors.email || "Field Required"}</p>
+              <p style={{visibility : error.email ? "visible" : " hidden"}}>{ error.email || "Field Required"}</p>
             </div>
             <div>
-              <label style={errors.password && {color:"red"}}>Password</label>
+              <label style={error.password && {color:"red"}}>Password</label>
               <input
                 type="password"
                 placeholder="Enter Password"
                 name="password"
                 value={formData.password}
-                style={ errors.password && {border:"1px solid red"}}
+                style={ error.password && {border:"1px solid red"}}
                 onChange={(e) =>
                   setFormData({ ...formData, [e.target.name]: e.target.value })
                 }
               />
-              <p style={{visibility: errors.password ? "visible" : "hidden"}}>{ errors.password || "Field Required"}</p>
+              <p style={{visibility: error.password ? "visible" : "hidden"}}>{ error.password || "Field Required"}</p>
             </div>
             <div>
-              <label style={errors.confirmPass && {color:"red"}}>Confirm Password</label>
+              <label style={error.confirmPass && {color:"red"}}>Confirm Password</label>
               <input
                 type="password"
                 placeholder="Enter Password"
                 name="confirmPassword"
-                style={ errors.confirmPass && {border:"1px solid red"}}
-                onChange={(e) => setConfirmPass(e.target.value)}
+                style={ error.confirmPass && {border:"1px solid red"}}
+                onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
               />
-              <p style={{visibility : errors.confirmPass ? "visible" : "hidden"}}>{errors.confirmPass || "Field Required"}</p>
+              <p style={{visibility : error.confirmPass ? "visible" : "hidden"}}>{error.confirmPass || "Field Required"}</p>
             </div>
             <div>
-              <button className={styles.loginButton} type="submit">
+              <button className={styles.loginButton} type="submit" onClick={() => navigate("/login")}>
                 Sign Up
               </button>
             </div>

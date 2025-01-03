@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "../modals/shareWork.module.css";
-import { RxCross2 } from "react-icons/rx";
+import { RxCross1 } from "react-icons/rx";
 import { ShareWorkSpaceViaMail } from "../../services/user.services";
 
 const ShareWorkSpace = ({ onClose, userData }) => {
@@ -38,7 +38,7 @@ const ShareWorkSpace = ({ onClose, userData }) => {
       <div className={styles.container}>
         <div className={styles.crossBtn}>
           <button onClick={() => onClose()}>
-            <RxCross2 size={24} color="red" />
+            <RxCross1 size={24} color="red" />
           </button>
         </div>
         <div className={styles.InviteByMail}>

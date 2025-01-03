@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./pageStyles/formbot.module.css";
-import Loader from "../components/Loder";
+import Loading from "../components/Loading";
 import logo from "../assets/formBotLogo.png";
 import { IoSend } from "react-icons/io5";
 import { useParams } from "react-router-dom";
@@ -157,7 +157,7 @@ const FormBot = () => {
   return (
     <div className={styles.container}>
       {loading ? (
-        <Loader />
+        <Loading />
         ) : (
         <div className={styles.FormContainer}>
           {formDetails &&

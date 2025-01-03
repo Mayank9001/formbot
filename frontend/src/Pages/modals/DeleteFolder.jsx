@@ -14,7 +14,7 @@ const DeleteFolder = ({ onClose, onConfirm}) => {
         <h1 style={{textAlign:"center"}}>Are you sure you want to delete this Folder ?</h1>
         <div className={styles.userBtns}>
           <button onClick={onConfirm}>Confirm</button>
-          <button onClick={onClose}>Cancle</button>
+          <button onClick={onClose}>Cancel</button>
         </div>
       </div>
     </div>

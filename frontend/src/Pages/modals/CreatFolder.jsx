@@ -49,7 +49,7 @@ const CreatFolder = ({ onClose }) => {
         </p>
         <div className={styles.userBtns}>
           <button onClick={handleCreateFolder}>Done</button>
-          <button onClick={onClose}>Cancle</button>
+          <button onClick={onClose}>Cancel</button>
         </div>
       </div>
     </div>
