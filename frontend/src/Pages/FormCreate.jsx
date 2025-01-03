@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./pageStyles/Form.module.css";
+import { toast } from "react-toastify";
 import { GrFlagFill } from "react-icons/gr";
 import FormmNav from "../components/FormmNav";
 import UserTookKit from "./formComponents/UserTookKit";
@@ -41,7 +42,7 @@ const FormCreate = () => {
         setFormName(data.formData.formName);
         setFormData(data.formData.formDetails);
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
@@ -107,14 +108,14 @@ const FormCreate = () => {
 
   const handleSaveForm = async () => {
     if (!formName) {
-      return alert("Form Name is Required !");
+      return toast.info("Form Name is Required !");
     }
     if (formData.length < 2) {
-      return alert("Form must contain at least one field!");
+      return toast.info("Form must contain at least one field!");
     }
 
     if (hasEmptyBubble) {
-      return alert("All Bubble fields must have a value!");
+      return toast.info("All Bubble fields must have a value!");
     }
 
     const adjustedFolderId = folderid === "workspace" ? null : folderid;
@@ -129,10 +130,10 @@ const FormCreate = () => {
       const res = await createForm(fomrData);
       const data = await res.json();
       if (res.status === 200) {
-        alert(data.message);
+        toast.success(data.message);
         navigate(-1);
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
@@ -146,10 +147,10 @@ const FormCreate = () => {
     navigator.clipboard
       .writeText(link)
       .then(() => {
-        alert("Form link copied to clipboard!");
+        toast.info("Form link copied to clipboard!");
       })
       .catch((err) => {
-        alert("Failed to copy the link: " + err);
+        toast.warning("Failed to copy the link: " + err);
       });
   };
 

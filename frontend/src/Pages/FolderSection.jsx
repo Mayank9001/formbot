@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import WorkSpaceNavbar from "../components/WorkSpaceNavbar";
@@ -5,7 +6,6 @@ import styles from "./pageStyles/folderSection.module.css";
 import { deleteForm, getAllFolder, getFormById } from "../services/admin.services";
 import { FaPlus } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import FormmFormat from "../components/FormmFormat";
 import Loading from "../components/Loading";
 
@@ -36,10 +36,10 @@ const FolderSection = () => {
       const res = await deleteForm(id);
       const data = await res.json();
       if (res.status == 200) {
-        alert(data.message);
+        toast.success(data.message);
         getAllfolders();
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);

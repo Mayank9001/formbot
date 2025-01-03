@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./pageStyles/workspace.module.css";
 import { FaPlus } from "react-icons/fa6";
+import { toast } from "react-toastify";
 import  Loading  from "../components/Loading"
 import { AiOutlineFolderAdd } from "react-icons/ai";
 import CreatFolder from "./modals/CreatFolder";
@@ -135,10 +136,10 @@ const WorkSpace = () => {
       const res = await deleteForm(id);
       const data = await res.json();
       if (res.status == 200) {
-        alert(data.message);
+        toast.success(data.message);
         getGlobalForms();
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);

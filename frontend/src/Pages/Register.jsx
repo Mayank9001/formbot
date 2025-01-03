@@ -3,6 +3,7 @@ import styles from "./pageStyles/register.module.css";
 import triangle2 from "../assets/triangle2.png";
 import circle1 from "../assets/Ellipse 1.png";
 import circle2 from "../assets/Ellipse 2.png";
+import { toast } from "react-toastify";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/user.services";
@@ -32,15 +33,15 @@ const Register = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if(!validateFrom()){
-      return alert("All fields Required");
+      return toast.info("All fields Required");
     }
     try {
       const res = await registerUser(formData);
       const data = await res.json();
       if(res.status == 200){
-        alert(data.message);
+        toast.success(data.message);
       }else{
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./pageStyles/login.module.css";
 import triangle2 from "../assets/triangle2.png";
 import circle1 from "../assets/Ellipse 1.png";
+import { toast } from "react-toastify";
 import circle2 from "../assets/Ellipse 2.png";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -49,10 +50,10 @@ const Login = () => {
 
       if (res.status === 200) {
         localStorage.setItem("token", data.token);
-        alert(data.message);
+        toast.success(data.message);
         navigate("/workspace");
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);

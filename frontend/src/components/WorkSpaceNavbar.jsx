@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./compStyles/workNav.module.css";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../Contexts/ThemeProvider";
+import { toast } from "react-toastify";
 
 const WorkSpaceNavbar = ({userData, setShowShareModel, myWorkSpaces, handleSelectedWorkSpace}) => {
   
@@ -25,7 +26,7 @@ const WorkSpaceNavbar = ({userData, setShowShareModel, myWorkSpaces, handleSelec
       navigate(`/settings/${userData.id}`);
     } else if (value === "Logout") {
       localStorage.removeItem("token"); // Clear token
-      alert("Logged out successfully");
+      toast.info("Logged out successfully");
       navigate("/"); 
     } else{
       handleSelectedWorkSpace(value);

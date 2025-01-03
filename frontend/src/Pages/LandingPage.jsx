@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./pageStyles/landinpage.module.css";
 import triangle from "../assets/traingle1.png";
+import { toast } from "react-toastify";
 import seicircle from "../assets/semiCircle.png";
 import landingbanner from "../assets/landingPage.png";
 import formBotLogo from "../assets/formBotLogo.png";

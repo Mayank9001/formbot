@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./createfolder.module.css";
 import { createFolder } from "../../services/admin.services";
+import { toast } from "react-toastify";
 
 const CreatFolder = ({ onClose }) => {
   const modelRef = useRef();
@@ -21,7 +22,7 @@ const CreatFolder = ({ onClose }) => {
       const res = await createFolder({folderName});
       const data = await res.json();
       if (res.status == 200) {
-        alert("Folder create Succesfully");
+        toast.success("Folder create Succesfully");
         onClose();
       }
       if (res.status == 400) {

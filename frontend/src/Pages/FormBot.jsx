@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./pageStyles/formbot.module.css";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import logo from "../assets/formBotLogo.png";
 import { IoSend } from "react-icons/io5";
@@ -121,16 +122,17 @@ const FormBot = () => {
         const res = await submitResponse(ResponseData);
         const data = await res.json();
         if (res.status == 200) {
-          alert(data.message);
+          toast.success(data.message);
           setResonSubmit(true);
         } else {
-          alert(data.message);
+          toast.error(data.message);
         }
       } catch (error) {
         console.log(error);
       }
     } else {
-      alert("form Already Submitted");
+      
+      toast.info("form Already Submitted");
     }
     setLoading(false);
   };
