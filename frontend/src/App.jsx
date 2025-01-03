@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
+  BrowserRouter as Router,
+  Routes,
+  Route,
 } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import NavBar from "./components/NavBar";
@@ -16,58 +18,28 @@ import Settings from "./Pages/Settings";
 import FormBot from "./Pages/FormBot";
 import { ThemeProvider } from "./Contexts/ThemeProvider";
 
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <>
-        <NavBar />
-        <LandingPage />
-      </>
-    ),
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/workspace",
-    element: <WorkSpace />,
-  },
-  {
-    path: "/settings/:userId",
-    element: <Settings />,
-  },
-  {
-    path: "/workspace/:id",
-    element: <FolderSection />,
-  },
-  {
-    path: "/form-create/:folderid",
-    element: <FormCreate />,
-  },
-  {
-    path: "/form-create/workspace",
-    element: <FormCreate />,
-  },
-  {
-    path: "/form-get/:formid",
-    element: <FormCreate />,
-  },
-  {
-    path: "/form-bot/:formid",
-    element: <FormBot />,
-  },
-]);
 
 const App = () => {
   return (
     <ThemeProvider>
-      <RouterProvider router={appRouter} />
+      <ToastContainer position="bottom-right" theme="colored" closeButton={false} />
+      <Router>
+        <Routes>
+          <Route path='/' element={<>
+                <NavBar />
+                <LandingPage />
+              </>}/>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
+          <Route path='/workspace' element={<WorkSpace />}/>
+          <Route path='/settings/:userId' element={<Settings />}/>
+          <Route path='/workspace/:id' element={<FolderSection />}/>
+          <Route path='/form-create/:folderid' element={<FormCreate />}/>
+          <Route path='/form-create/workspace' element={<FormCreate />}/>
+          <Route path='/form-get/:formid' element={<FormCreate />}/>
+          <Route path='/form-bot/:formid' element={<FormBot />}/>
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 };
