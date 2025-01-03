@@ -56,10 +56,9 @@
     font-weight: 600;
     cursor: pointer;
 }
-
-.userBtns button:nth-child(2){
-    border: none;
-}
 .userBtns button:nth-child(odd){
     color: #4B83FF;
+}
+.userBtns button:nth-child(2){
+    border: none;
 }
