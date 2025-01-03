@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from "../modals/shareWork.module.css";
 import { RxCross1 } from "react-icons/rx";
 import { ShareWorkSpaceViaMail } from "../../services/user.services";
+import { toast } from "react-toastify";
 
 const ShareWorkSpace = ({ onClose, userData }) => {
   const modelRef = useRef();
@@ -24,9 +25,9 @@ const ShareWorkSpace = ({ onClose, userData }) => {
       const res = await ShareWorkSpaceViaMail(userData.id, data);
       const resData = await res.json();
       if (res.status == 200) {
-        alert(resData.message);
+        toast.success(resData.message);
       } else {
-        alert(resData.message);
+        toast.error(resData.message);
       }
     } catch (error) {
       console.log(error);

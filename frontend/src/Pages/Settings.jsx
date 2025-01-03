@@ -4,6 +4,7 @@ import { SlLock } from "react-icons/sl";
 import { FaRegUser } from "react-icons/fa";
 import { BsEyeSlash } from "react-icons/bs";
 import { PiEye } from "react-icons/pi";
+import { toast } from "react-toastify";
 import { FiLogOut } from "react-icons/fi";
 import { UpdateUser } from "../services/user.services";
 import { useNavigate, useParams } from "react-router-dom";
@@ -29,9 +30,9 @@ const Settings = () => {
       const res = await UpdateUser(userId,userData);
       const data = await res.json();
       if(res == 200){
-        alert(data.message);
+        toast.success(data.message);
       }else{
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
@@ -49,7 +50,7 @@ const Settings = () => {
   // handle User Logout
   const handleLogout = () => {
       localStorage.removeItem("token"); 
-      alert("Logged out successfully");
+      toast.info("Logged out successfully");
       navigate("/"); 
     };
 

@@ -21,7 +21,6 @@
     border-radius: 15px;
     position: relative;
 }
-
 .container h1{
     font-size: 30px;
     font-weight: 400;
@@ -61,7 +60,6 @@
 .userBtns button:nth-child(2){
     border: none;
 }
-
-.userBtns button:hover{
+.userBtns button:nth-child(odd){
     color: #4B83FF;
 }
